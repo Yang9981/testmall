@@ -1,7 +1,7 @@
 <template>
   <div class="tab-bar-item" @click="itemClick">
-    <div v-if="!isActive"><slot name="item-icon"></slot></div>
-    <div v-else><slot name="item-icon-action"></slot></div>
+    <div v-if="!isActive"><slot name="item-icon"></slot></div> <!-- 放入两个图片插槽插入选中和不选中的图片，通过v-if判断状态 -->
+    <div v-else><slot name="item-icon-action"></slot></div><!-- 之所以给插槽外层套div是因为外部会将插槽全部替换，导致插槽样式无法生效，所以样式挂载在外层div -->
     <div :style="activeStyle"><slot name="item-text"></slot></div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   props:{
     path:String,
     activeColor:{
-      type:String,
+      type:String, 
       defalut:'red'
     }
   },
