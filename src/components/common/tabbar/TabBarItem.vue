@@ -14,6 +14,7 @@ export default {
 
     }
   },
+
   props:{
     path:String,
     activeColor:{
@@ -21,6 +22,7 @@ export default {
       defalut:'red'
     }
   },
+  
   computed: {
     isActive(){
       return this.$route.path.indexOf(this.path) !==-1
@@ -31,7 +33,7 @@ export default {
   },
   methods: {
     itemClick(){
-      this.$router.push(this.path);
+      this.$router.push(this.path).catch(()=>{});
     }
   }
 }

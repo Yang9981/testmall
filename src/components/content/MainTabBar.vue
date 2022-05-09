@@ -1,6 +1,5 @@
 <template>
-    <tab-bar #default>
-      
+    <tab-bar v-slot>
       <tab-bar-item path="/home" activeColor="blue">
         <template #item-icon><img src="../../assets/images/tabbar/home.svg" alt=""></template>
         <template #item-icon-action><img src="../../assets/images/tabbar/home_active.svg" alt=""></template>
