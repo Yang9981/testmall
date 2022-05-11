@@ -1,8 +1,8 @@
 <template>
     <tab-bar v-slot>
-      <tab-bar-item path="/home" activeColor="blue">
-        <template #item-icon><img src="../../assets/images/tabbar/home.svg" alt=""></template>
-        <template #item-icon-action><img src="../../assets/images/tabbar/home_active.svg" alt=""></template>
+      <tab-bar-item path="/home" activeColor="red">
+        <template #item-icon><img src="~assets/images/tabbar/home.svg" alt=""></template>
+        <template #item-icon-action><img src="~assets/images/tabbar/home_active.svg" alt=""></template>
         <template #item-text>首页</template>
       </tab-bar-item>
 

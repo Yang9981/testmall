@@ -4,28 +4,19 @@
  <!-- （第2层）盒子，class为swiper-wrapper;用于存放所有分页内容 -->
   <div class="swiper-wrapper">
    <!-- （第3层）盒子，class为swiper-slide;用于存放 单个 分页内容 -->
-    <div class="swiper-slide">
-       <!-- （第4层）盒子，class为swiper-zoom-container;用于控制里面的img缩放属性；如果这里不添加图片会被异常拉伸（具体问题没有找），所以推荐使用 -->
-      <div class="swiper-zoom-container">
-        <!-- （第5层）放置img -->
-        <img src='~assets/images/test/1.png'>
+     <div class="swiper-slide" v-for="item in banners" :key="item">
+                <div class="class swiper-zoom-container">
+                    <img :src="item.image" alt="">
+                </div>
       </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="swiper-zoom-container">
-        <img src="~assets/images/test/2.png" />
-      </div>
-    </div>
   </div>
   
   <!-- （属于第2层位置），class为swiper-button-next; 存放下一个页面的箭头 -->
   <div class="swiper-button-next">
     <!-- 存放字体文件的（本例中使用的是本地字体图标） -->
-    <i class="iconfont icon-forward"></i>
   </div>
   <!-- （属于第2层位置），class为swiper-button-prev; 存放上一个页面的箭头 -->
   <div class="swiper-button-prev">
-    <i class="iconfont icon-back"></i>
   </div>
   <!-- （属于第2层位置），class为swiper-pagination; 存放分页（下方小圆点）按钮的 -->
   <div class="swiper-pagination"></div>
@@ -42,16 +33,21 @@ import "swiper/dist/css/swiper.min.css";
 
 export default {
   name: "App",
+  props:['banners'],
+  methods: {
+    
+  },
   // 挂载完成后
   mounted() {
-    var mySwiper = new Swiper(".swiper-container", {
+    setTimeout(()=>{
+      var mySwiper = new Swiper(".swiper-container", {
       loop: true, // 循环模式
       effect: "fade", // 渐现动画
       // zoom: true, // 控制缩放（需要配合html使用）
 
 	  // 自动轮播
       autoplay: {
-        delay: 2000, // 2秒切换一次
+        delay: 1000, // 2秒切换一次
         disableOnInteraction: false, // 如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。
       },
       
@@ -66,6 +62,8 @@ export default {
           return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
       },
+      observer:true,
+      observeParents:true,
 	  
 	  // 左右（前后）切换箭头
       navigation: {
@@ -81,15 +79,16 @@ export default {
       // 显示出前进后退按钮
       mySwiper.navigation.$nextEl.css("display", "block");
       mySwiper.navigation.$prevEl.css("display", "block");
-    };
+    }
     // 鼠标移出后
     mySwiper.el.onmouseleave = function () {
       mySwiper.autoplay.start();
       mySwiper.navigation.$nextEl.css("display", "none");
       mySwiper.navigation.$prevEl.css("display", "none");
-    };
-  },
-};
+    }
+  },100)
+}
+}
 </script>
 
 
